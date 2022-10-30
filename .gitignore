@@ -3,3 +3,11 @@
 ################################################################################
 
 /Back/Trabalho.Final.Visual.Api/bin/Debug/net5.0
+/Back/Trabalho.Final.Visual.Api/obj/Debug/net5.0
+/Back/Trabalho.Final.Visual.Api/obj
+/Back/.vs/Trabalho.Final.Visual
+/Back/Trabalho.Final.Visual.Dominio/bin/Debug/net5.0
+/Back/Trabalho.Final.Visual.Dominio/obj/Debug/net5.0
+/Back/Trabalho.Final.Visual.Dominio/obj
+/Back/Trabalho.Final.Visual.Infra/bin/Debug/net5.0
+/Back/Trabalho.Final.Visual.Infra/obj
