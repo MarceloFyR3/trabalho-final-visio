@@ -9,8 +9,6 @@ namespace Trabalho.Final.Visual.Dominio.Interface.Services
     {
         Task<bool> Cadastrar(AgendaModelo modelo);
 
-        Task<bool> Atualizar(AgendaModelo modelo);
-
         Task<Agenda> BuscarPorId(int id);
 
         Task<IEnumerable<Agenda>> BuscarTodos();

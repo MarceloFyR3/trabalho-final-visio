@@ -12,14 +12,16 @@ namespace Trabalho.Final.Visual.Infra.Repository.Agenda
 
         public async Task<bool> Update(Dominio.Entidades.Agenda agenda)
         {
-
             var @return = false;
 
-            var cli = await Get(agenda.Id);
+            var entity = await Get(agenda.Id);
 
-            if (cli != null)
+            if (entity != null)
             {
-                _dbContext.Entry(cli).CurrentValues.SetValues(agenda);
+                entity.DiaHora = agenda.DiaHora;
+                entity.ClienteId = agenda.ClienteId;
+                entity.PetId = agenda.PetId;
+
                 await _dbContext.SaveChangesAsync();
 
                 @return = true;

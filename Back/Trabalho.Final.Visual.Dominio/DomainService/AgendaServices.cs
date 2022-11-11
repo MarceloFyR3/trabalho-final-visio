@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Trabalho.Final.Visual.Dominio.Entidades;
@@ -17,24 +18,15 @@ namespace Trabalho.Final.Visual.Dominio.DomainService
             _agendaRepository = agendaRepository;
         }
 
-        public async Task<bool> Atualizar(AgendaModelo modelo)
-        {
-            var entity = new Agenda { Id = modelo.Id, DiaHora = modelo.DiaHora, PetId = modelo.PetId };
-
-            var @return = await _agendaRepository.Update(entity);
-
-            return @return;
-        }
-
         public async Task<Agenda> BuscarPorId(int id)
         {
-            var @return = await _agendaRepository.Get(id);
+            var @return = await _agendaRepository.Find(predicate: p=> p.Id.Equals(id), include: i => i.Include(p => p.Cliente).Include(p => p.Pet));
             return @return;
         }
 
         public async Task<IEnumerable<Agenda>> BuscarTodos()
         {
-            var @return = await _agendaRepository.GetAll();
+            var @return = await _agendaRepository.FindAll(predicate: p => p.DiaHora > DateTime.Now);
             return @return;
         }
 
