@@ -17,6 +17,7 @@ using Trabalho.Final.Visual.Dominio.Interface.Repository;
 using Trabalho.Final.Visual.Dominio.Interface.Services;
 using Trabalho.Final.Visual.Infra.Context;
 using Trabalho.Final.Visual.Infra.Repository;
+using Trabalho.Final.Visual.Infra.Repository.Agenda;
 using Trabalho.Final.Visual.Infra.Repository.Cliente;
 using Trabalho.Final.Visual.Infra.Repository.Pet;
 
@@ -34,7 +35,6 @@ namespace Trabalho.Final.Visual.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
 
             services.AddDbContext<AppDbContext>(
@@ -43,16 +43,23 @@ namespace Trabalho.Final.Visual.Api
                 opts.UseNpgsql(@"Host=localhost;Port=5432;Database=postgres;User Id=postgres;Password=p@ssw0rd;Pooling=true;");
             });
 
+            services.AddCors(o => o.AddPolicy("Pet" +
+                "Policy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
             //servicos
             services.AddTransient<IClienteServices, ClienteServices>();
             services.AddTransient<IPetServices, PetServices>();
-
+            services.AddTransient<IAgendaServices, AgendaServices>();
 
             //repository 
-
             services.AddTransient<IClienteRepository, ClienteRepository>();
             services.AddTransient<IPetRepository, PetRepository>();
-
+            services.AddTransient<IAgendaRepository, AgendaRepository>();
 
             services.AddSwaggerGen(c =>
             {

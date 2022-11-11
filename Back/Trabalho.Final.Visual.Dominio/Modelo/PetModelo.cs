@@ -9,5 +9,6 @@ namespace Trabalho.Final.Visual.Dominio.Modelo
         public int Idade { get; set; }
         public bool Ativo { get; set; }
         public PorteEnum Porte { get; set; }
+        public int ClienteId { get; set; }
     }
 }

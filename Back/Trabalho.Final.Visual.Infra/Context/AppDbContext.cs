@@ -46,6 +46,10 @@ namespace Trabalho.Final.Visual.Infra.Context
             modelBuilder.Entity<Pet>()
                 .HasMany(c => c.Agendas)
                 .WithOne(e => e.Pet);
+
+            modelBuilder.Entity<Cliente>()
+                .HasMany(c => c.Pets)
+                .WithOne(e => e.Cliente);
         }
     }
 }

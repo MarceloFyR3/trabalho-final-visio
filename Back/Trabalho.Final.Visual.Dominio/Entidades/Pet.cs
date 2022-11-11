@@ -9,6 +9,9 @@ namespace Trabalho.Final.Visual.Dominio.Entidades
         public int Idade { get; set; }
         public bool Ativo { get; set; }
         public PorteEnum Porte { get; set; }
+        public int ClienteId { get; set; }
+        public Cliente Cliente { get; set; }
+
         public ICollection<Agenda> Agendas { get; set; }
     }
 }

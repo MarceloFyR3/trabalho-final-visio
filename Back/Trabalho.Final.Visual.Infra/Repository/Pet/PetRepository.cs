@@ -15,11 +15,12 @@ namespace Trabalho.Final.Visual.Infra.Repository.Pet
 
             var @return = false;
 
-            var cli = await Get(pet.Id);
+            var entity = await Get(pet.Id);
 
-            if (cli != null)
+            if (entity != null)
             {
-                _dbContext.Entry(cli).CurrentValues.SetValues(pet);
+                pet.ClienteId = entity.ClienteId;
+                _dbContext.Entry(entity).CurrentValues.SetValues(pet);
                 await _dbContext.SaveChangesAsync();
 
                 @return = true;

@@ -45,7 +45,8 @@ namespace Trabalho.Final.Visual.Dominio.DomainService
                 Nome = modelo.Nome,
                 Porte = modelo.Porte,
                 Idade = modelo.Idade,
-                Ativo = modelo.Ativo
+                Ativo = modelo.Ativo,
+                ClienteId = modelo.ClienteId
             };
 
             var item = await _petRepository.CreateItem(entity);

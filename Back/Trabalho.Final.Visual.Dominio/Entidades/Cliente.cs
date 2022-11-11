@@ -13,7 +13,8 @@ namespace Trabalho.Final.Visual.Dominio.Entidades
         public string Email { get; set; }
         public bool Ativo { get; set; }
 
+        public virtual ICollection<Agenda> Agendas { get; set; }
+        public virtual ICollection<Pet> Pets { get; set; }
 
-        public ICollection<Agenda> Agendas { get; set; }
     }
 }

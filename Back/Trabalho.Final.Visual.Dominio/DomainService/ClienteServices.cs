@@ -40,25 +40,19 @@ namespace Trabalho.Final.Visual.Dominio.DomainService
 
         public async Task<bool> Cadastrar(ClienteModelo modelo)
         {
-            try
+            var entity = new Cliente
             {
-                var entity = new Cliente
-                {
-                    Nome = modelo.Nome,
-                    Email = modelo.Email
-                };
+                Nome = modelo.Nome,
+                Email = modelo.Email,
+                Ativo = true
+            };
 
-                var item = await _petRepository.CreateItem(entity);
+            var item = await _petRepository.CreateItem(entity);
 
-                if (item != null)
-                    return true;
+            if (item != null)
+                return true;
 
-                return false;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return false;
         }
 
         public async Task<bool> MudarStatsu(int id, bool status)

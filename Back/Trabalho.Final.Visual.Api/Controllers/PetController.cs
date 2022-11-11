@@ -34,7 +34,7 @@ namespace Trabalho.Final.Visual.Api.Controllers
                     return StatusCode(StatusCodes.Status200OK, new { Message = $"Pet {request.Nome} cadastrado!" });
                 }
 
-                return StatusCode(StatusCodes.Status400BadRequest, result);
+                return StatusCode(StatusCodes.Status400BadRequest, new { Message = "create pet error!" });
             }
             catch (Exception ex)
             {
@@ -42,7 +42,7 @@ namespace Trabalho.Final.Visual.Api.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("update")]
         public async Task<IActionResult> Atualizar([FromBody] PetModelo request)
         {
@@ -54,7 +54,7 @@ namespace Trabalho.Final.Visual.Api.Controllers
                     return StatusCode(StatusCodes.Status200OK, new { Message = $"Pet {request.Nome} atualizado!" });
                 }
 
-                return StatusCode(StatusCodes.Status400BadRequest, result);
+                return StatusCode(StatusCodes.Status400BadRequest, new { Message = "update pet error!" });
             }
             catch (Exception ex)
             {
@@ -74,7 +74,7 @@ namespace Trabalho.Final.Visual.Api.Controllers
                     return StatusCode(StatusCodes.Status200OK, result);
                 }
 
-                return StatusCode(StatusCodes.Status400BadRequest, result);
+                return StatusCode(StatusCodes.Status400BadRequest, new { Message = "pet not found!" });
             }
             catch (Exception ex)
             {
@@ -82,7 +82,7 @@ namespace Trabalho.Final.Visual.Api.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPatch]
         [Route("change-status")]
         public async Task<IActionResult> MudarStatus([FromBody] MudarStatusModelo request)
         {
@@ -98,7 +98,7 @@ namespace Trabalho.Final.Visual.Api.Controllers
                     return StatusCode(StatusCodes.Status200OK, new { Message = $"{msg} Cliente!" });
                 }
 
-                return StatusCode(StatusCodes.Status400BadRequest, result);
+                return StatusCode(StatusCodes.Status400BadRequest, new { Message = "pet chenge status error!" });
             }
             catch (Exception ex)
             {
